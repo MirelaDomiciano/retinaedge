@@ -1,0 +1,9 @@
+# Raspberry Pi 5, Raspberry Pi OS Bookworm 64-bit, Python 3.11
+# Create the venv with --system-site-packages so picamera2 (installed via apt) is visible.
+ai-edge-litert
+flask
+numpy
+pillow
+psutil
+# optional, only for a USB webcam instead of the Pi camera:
+# opencv-python-headless

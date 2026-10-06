@@ -1,0 +1,100 @@
+{
+  "project": "RetinaEdge",
+  "created": "2026-10-05T23:03:43",
+  "img_size": 384,
+  "input": "RGB uint8 (H, W, 3) from preprocess.load_and_preprocess + to_array; normalization is inside the model, feed raw 0-255 values",
+  "grade_names": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative DR"
+  ],
+  "referable_min_grade": 2,
+  "grade_rule": "expected = probs @ [0..4]; grade = digitize(expected, qwk_thresholds)",
+  "referable_rule": "P(referable) = probs[2:].sum() >= referable_threshold",
+  "default_model": "mobilenetv2_384_fp16",
+  "models": [
+    {
+      "name": "mobilenetv2_384_fp16",
+      "file": "models/mobilenetv2_384_fp16.tflite",
+      "run": "mobilenetv2_aptos_384_20261005_1859",
+      "backbone": "mobilenetv2",
+      "variant": "fp16",
+      "input_dtype": "float32",
+      "input_quantization": [
+        0.0,
+        0.0
+      ],
+      "qwk_thresholds": [
+        0.5061,
+        1.5002,
+        2.4928,
+        3.4328
+      ],
+      "referable_threshold": 0.4690665006637573,
+      "test": {
+        "QWK (argmax)": 0.867,
+        "QWK (thresholds)": 0.894,
+        "accuracy (argmax)": 0.812,
+        "AUC referable": 0.974,
+        "sensitivity": 0.926,
+        "specificity": 0.928
+      }
+    },
+    {
+      "name": "mobilenetv2_384_int8_c300",
+      "file": "models/mobilenetv2_384_int8_c300.tflite",
+      "run": "mobilenetv2_aptos_384_20261005_1859",
+      "backbone": "mobilenetv2",
+      "variant": "int8_c300",
+      "input_dtype": "uint8",
+      "input_quantization": [
+        1.0,
+        0.0
+      ],
+      "qwk_thresholds": [
+        0.5061,
+        1.5002,
+        2.4928,
+        3.4328
+      ],
+      "referable_threshold": 0.4690665006637573,
+      "test": {
+        "QWK (argmax)": 0.831,
+        "QWK (thresholds)": 0.866,
+        "accuracy (argmax)": 0.803,
+        "AUC referable": 0.971,
+        "sensitivity": 0.837,
+        "specificity": 0.944
+      }
+    },
+    {
+      "name": "resnet50_384_dynamic",
+      "file": "models/resnet50_384_dynamic.tflite",
+      "run": "resnet50_aptos_384_20261005_1759",
+      "backbone": "resnet50",
+      "variant": "dynamic",
+      "input_dtype": "float32",
+      "input_quantization": [
+        0.0,
+        0.0
+      ],
+      "qwk_thresholds": [
+        0.5009,
+        1.5971,
+        2.4412,
+        3.5543
+      ],
+      "referable_threshold": 0.2987298369407654,
+      "test": {
+        "QWK (argmax)": 0.886,
+        "QWK (thresholds)": 0.897,
+        "accuracy (argmax)": 0.818,
+        "AUC referable": 0.978,
+        "sensitivity": 0.951,
+        "specificity": 0.912
+      }
+    }
+  ]
+}
