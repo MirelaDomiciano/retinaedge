@@ -1,0 +1,2 @@
+model,px,QWK (argmax),QWK (thresholds),accuracy,F1 macro,AUC referable,sensitivity,specificity
+mobilenetv2,384,0.869,0.895,0.795,0.583,0.974,0.926,0.928

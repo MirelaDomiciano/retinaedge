@@ -1,0 +1,11 @@
+model,variant,size (MB),val QWK (argmax),same grade as Keras,max prob. diff
+mobilenetv2,keras (fp32),,0.885,1.0,0.0
+mobilenetv2,fp16,4.52,0.878,0.994,0.051
+mobilenetv2,dynamic,2.536,0.855,0.941,0.444
+mobilenetv2,int8_c300,2.739,0.84,0.916,0.398
+mobilenetv2,int8_call,2.739,0.837,0.908,0.379
+resnet50,keras (fp32),,0.882,1.0,0.0
+resnet50,fp16,47.068,0.882,1.0,0.006
+resnet50,dynamic,23.947,0.884,0.994,0.151
+resnet50,int8_c300,24.271,0.711,0.764,0.993
+resnet50,int8_call,24.271,0.703,0.759,0.993

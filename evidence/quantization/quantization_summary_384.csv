@@ -1,0 +1,6 @@
+model,variant,size (MB),QWK (argmax),QWK (thresholds),accuracy (argmax),accuracy (thresholds),F1 macro (thresholds),AUC referable,sensitivity,specificity,same grade as Keras
+mobilenetv2,keras (fp32),,0.869,0.895,0.818,0.795,0.583,0.974,0.926,0.928,1.0
+mobilenetv2,fp16,4.52,0.867,0.894,0.812,0.791,0.578,0.974,0.926,0.928,0.99
+mobilenetv2,int8_c300,2.739,0.831,0.866,0.803,0.795,0.583,0.971,0.837,0.944,0.9
+resnet50,keras (fp32),,0.887,0.901,0.816,0.791,0.605,0.979,0.946,0.915,1.0
+resnet50,dynamic,23.947,0.886,0.897,0.818,0.784,0.599,0.978,0.951,0.912,0.992

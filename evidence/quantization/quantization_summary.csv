@@ -1,0 +1,7 @@
+model,precision,size (MB),QWK (argmax),QWK (thresholds),accuracy (argmax),AUC referable,sensitivity,specificity,same grade as Keras,max prob. diff vs Keras
+resnet50,fp32,94.002,0.866,0.9,0.782,0.974,0.926,0.925,1.0,0.0
+resnet50,fp16,47.031,0.866,0.9,0.782,0.974,0.926,0.925,1.0,0.004
+resnet50,int8,24.249,0.789,0.818,0.707,0.954,0.877,0.875,0.801,0.928
+mobilenetv2,fp32,8.886,0.835,0.864,0.764,0.967,0.911,0.9,1.0,0.0
+mobilenetv2,fp16,4.472,0.832,0.866,0.761,0.967,0.916,0.9,0.989,0.037
+mobilenetv2,int8,2.712,0.814,0.859,0.753,0.965,0.887,0.909,0.929,0.411
