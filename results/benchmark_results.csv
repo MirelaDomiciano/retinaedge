@@ -1,0 +1,4 @@
+model,variant,size_mb,inference_ms_mean,inference_ms_p50,inference_ms_p95,preprocess_ms_mean,end_to_end_ms_mean,fps_end_to_end,cpu_percent,model_ram_mb,temp_c,sample_accuracy,n_inferences
+mobilenetv2_384_fp16,fp16,4.52,33.7,33.7,34.0,7.3,45.7,21.87,79.6,7.9,59.0,0.5,50
+mobilenetv2_384_int8_c300,int8_c300,2.74,9.3,9.3,9.5,7.3,24.2,41.25,52.5,-19.4,57.9,0.5,50
+resnet50_384_dynamic,dynamic,23.95,135.6,135.4,137.0,7.3,147.7,6.77,88.4,69.4,67.2,0.6,50

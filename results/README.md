@@ -1,13 +1,19 @@
 # Results
 
-CSV files and figures used in the report, copied from Google Drive (`tcc/runs/`, `tcc/data/`)
-and from the Raspberry Pi benchmark.
+Raspberry Pi 5 benchmark, generated on the Pi with `python app.py --benchmark` and copied from
+`app/benchmark_results.*`.
 
 | File | Content |
 |---|---|
-| `test_summary.csv` | Keras models on the test set (224 and 384 px) |
-| `quantization_val_384.csv` | Quantization variants compared on validation |
-| `quantization_summary_384.csv` | Selected TFLite variants on the test set |
-| `dedup_report.csv` | Duplicate pairs removed before the split |
-| `benchmark_results.csv` | Latency, FPS, CPU, RAM and temperature on the Raspberry Pi 5 |
-| `figures/` | Training curves, confusion matrices, ROC curves, quantization figures |
+| `benchmark_results.csv` | Latency (mean, p50, p95), pre-processing, end-to-end time, FPS, CPU, model RAM and temperature per model |
+| `benchmark_results.json` | Same data as JSON |
+
+The figures and CSVs from training and evaluation (Colab) are in [`evidence/`](../evidence):
+
+| Folder | Content |
+|---|---|
+| `dataset/` | Duplicate and conflicting pairs, class distribution |
+| `training/` | Training curves |
+| `evaluation/` | Keras models on the test set: summary, confusion matrix, ROC |
+| `quantization/` | TFLite variants on validation and test, QWK per variant, ROC after quantization |
+| `raspi_test/` | Screenshots of the live app on the Pi |

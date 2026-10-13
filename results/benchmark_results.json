@@ -1,0 +1,50 @@
+[
+  {
+    "model": "mobilenetv2_384_fp16",
+    "variant": "fp16",
+    "size_mb": 4.52,
+    "inference_ms_mean": 33.7,
+    "inference_ms_p50": 33.7,
+    "inference_ms_p95": 34.0,
+    "preprocess_ms_mean": 7.3,
+    "end_to_end_ms_mean": 45.7,
+    "fps_end_to_end": 21.87,
+    "cpu_percent": 79.6,
+    "model_ram_mb": 7.9,
+    "temp_c": 59.0,
+    "sample_accuracy": 0.5,
+    "n_inferences": 50
+  },
+  {
+    "model": "mobilenetv2_384_int8_c300",
+    "variant": "int8_c300",
+    "size_mb": 2.74,
+    "inference_ms_mean": 9.3,
+    "inference_ms_p50": 9.3,
+    "inference_ms_p95": 9.5,
+    "preprocess_ms_mean": 7.3,
+    "end_to_end_ms_mean": 24.2,
+    "fps_end_to_end": 41.25,
+    "cpu_percent": 52.5,
+    "model_ram_mb": -19.4,
+    "temp_c": 57.9,
+    "sample_accuracy": 0.5,
+    "n_inferences": 50
+  },
+  {
+    "model": "resnet50_384_dynamic",
+    "variant": "dynamic",
+    "size_mb": 23.95,
+    "inference_ms_mean": 135.6,
+    "inference_ms_p50": 135.4,
+    "inference_ms_p95": 137.0,
+    "preprocess_ms_mean": 7.3,
+    "end_to_end_ms_mean": 147.7,
+    "fps_end_to_end": 6.77,
+    "cpu_percent": 88.4,
+    "model_ram_mb": 69.4,
+    "temp_c": 67.2,
+    "sample_accuracy": 0.6,
+    "n_inferences": 50
+  }
+]

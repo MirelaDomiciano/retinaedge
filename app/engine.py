@@ -20,6 +20,9 @@ GRADES = np.arange(5)
 # Error-case thresholds (documented in the report; tuned on the bundled samples)
 DARK_MEAN = 25           # mean gray level of the central region below this = image too dark
 CORNER_DARK = 40         # a corner patch darker than this counts as the black fundus background
+CORNER_RATIO = 0.6       # ...or darker than this fraction of the centre (a screen's black is lifted by the camera)
+CORNER_FLAT = 12         # a background corner is flat: pixel std below this (a room or a face is not)
+MIN_RED_GREEN = 1.25     # fundus centre is orange/red: mean R / mean G above this (a grey wall or face is ~1)
 LOW_CONFIDENCE = 0.45    # highest class probability below this = low confidence
 
 
@@ -34,9 +37,16 @@ def looks_like_fundus(image):
     im = im.crop(box)
     im.thumbnail((128, 128))
     gray = np.asarray(im, dtype=np.float32).mean(axis=2)
+    arr = np.asarray(im, dtype=np.float32)
     k = max(2, min(gray.shape) // 12)
     corners = [gray[:k, :k], gray[:k, -k:], gray[-k:, :k], gray[-k:, -k:]]
-    return sum(c.mean() < CORNER_DARK for c in corners) >= 2
+    h, w = gray.shape
+    centre = gray[h // 4: 3 * h // 4, w // 4: 3 * w // 4].mean()
+    limit = max(CORNER_DARK, CORNER_RATIO * centre)
+    background = sum(c.mean() < limit and c.std() < CORNER_FLAT for c in corners) >= 2
+    rgb = arr[h // 4: 3 * h // 4, w // 4: 3 * w // 4].reshape(-1, 3).mean(axis=0)
+    reddish = rgb[0] / max(rgb[1], 1e-6) > MIN_RED_GREEN
+    return bool(background and reddish)
 
 
 def central_brightness(arr):
